@@ -1,10 +1,10 @@
 <p>Hallo <%= @item.owner_name %>,</p>
 
 <p>
-  herzlich willkommen auf Kaheim!
+  herzlich willkommen auf Berheim!
 </p>
 <p>
-  Soeben hast du auf Kaheim ein <%= @item.class.model_name.human %> mit dem Titel <i><%= @item.title %></i> angelegt.
+  Soeben hast du auf Berheim ein <%= @item.class.model_name.human %> mit dem Titel <i><%= @item.title %></i> angelegt.
   Bisher ist es noch nicht öffentlich, aber du kannst es mit einem Klick auf diesen
   <%= link_to 'Link', polymorphic_url(@item, action: :owner_show, token: @item.owner_show_token) %>  aktivieren.
 </p>
@@ -13,7 +13,7 @@
   Hebe diese E-Mail daher auf, bis du dein <%= @item.class.model_name.human %> nicht mehr brauchst.
 </p>
 <p>
-  Dein Kaheim-Team
+  Dein Berheim-Team
 </p>
 
 <p style="margin-top: 4em; color: gray">

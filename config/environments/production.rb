@@ -62,7 +62,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'kaheim.de', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'berheim.smd.berlin', protocol: 'https' }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
 
@@ -95,8 +95,8 @@ Rails.application.configure do
 
   # Deliver mails on exceptions
   config.middleware.use ExceptionNotification::Rack, email: {
-      sender_address: 'error@kaheim.de',
-      exception_recipients: %w{dev.tim.zeitz@googlemail.com kaheim.exceptions@glasmail.de}
+      sender_address: 'error@berheim.smd.berlin',
+      exception_recipients: %w{berheim@smd.berlin}
   }
 
   # exception views

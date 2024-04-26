@@ -86,12 +86,12 @@ de:
     hide_success: "%{model} wurde erfolgreich versteckt."
     hidden: "Nicht öffentlich"
     about: Impressum / Datenschutz
-    kaheim: Über Kaheim
+    kaheim: Über Berheim
     dot: punkt
 
   privacy:
     warning: Bitte keine sensiblen Daten angeben, da alle %{model} öffentlich einsehbar sind!
-    explanation: Dein Name wird öffentlich angezeigt, aber deine E-Mail-Adresse ist nicht öffentlich einsehbar. Unter deinem %{model} wird auf der Website ein Kontaktformular angezeigt mit dem Interessenten auf dein %{model} antworten können. Kaheim schickt dir dann eine E-Mail mit der Antwort. Deine Kontaktdaten bleiben damit geschützt (solange du sie nicht oben in der Beschreibung angibst).
+    explanation: Dein Name wird öffentlich angezeigt, aber deine E-Mail-Adresse ist nicht öffentlich einsehbar. Unter deinem %{model} wird auf der Website ein Kontaktformular angezeigt mit dem Interessenten auf dein %{model} antworten können. Berheim schickt dir dann eine E-Mail mit der Antwort. Deine Kontaktdaten bleiben damit geschützt (solange du sie nicht oben in der Beschreibung angibst).
 
   sort:
     sorted: Sortiert nach

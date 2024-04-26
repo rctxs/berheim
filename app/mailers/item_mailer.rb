@@ -1,5 +1,5 @@
 class ItemMailer < ActionMailer::Base
-  default from: "Kaheim <no-reply@kaheim.de>"
+  default from: "Berheim <no-reply@berheim.smd.berlin>"
 
   def item_creation_mail item
     @item = item
@@ -36,7 +36,7 @@ class ItemMailer < ActionMailer::Base
 
   def send_token_mail item
     @item = item
-    mail from: "team@kaheim.de", to: item.email, subject: default_i18n_subject(item_type: item.class.model_name.human)
+    mail from: "Berheim <no-reply@berheim.smd.berlin>", to: item.email, subject: default_i18n_subject(item_type: item.class.model_name.human)
   end
 
 end

@@ -1,5 +1,5 @@
 class SubscriptionMailer < ActionMailer::Base
-  default from: "Kaheim <no-reply@kaheim.de>"
+  default from: "Berheim <no-reply@berheim.smd.berlin>"
 
   def confirmation_request subscription
     @subscription = subscription

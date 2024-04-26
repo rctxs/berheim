@@ -64,45 +64,133 @@
                          placeholder: t('activerecord.attributes.offer.zip_code'),
                          class: 'input-sm' %>
         <%= f.select :district,
-                     grouped_options_for_select([["Der Westen", [
-                         "Daxlanden",
-                         "Grünwinkel",
-                         "Mühlburg",
-                         "Oberreut",
-                         "Weststadt",
-                     ]],
-                                                 ["Die Innenstadt", ["Innenstadt"]],
-                                                 ["Der Osten", [
-                                                     "Durlach",
-                                                     "Grötzingen",
-                                                     "Hagsfeld",
-                                                     "Oststadt",
-                                                     "Rintheim",
-                                                 ]],
-                                                 ["Der Norden", [
-                                                     "Knielingen",
-                                                     "Neureut",
-                                                     "Nordstadt",
-                                                     "Nordweststadt",
-                                                     "Waldstadt",
-                                                 ]],
-                                                 ["Der Süden", [
-                                                     "Beiertheim-Bulach",
-                                                     "Rüppurr",
-                                                     "Südstadt",
-                                                     "Südweststadt",
-                                                     "Weiherfeld-Dammerstock",
-                                                 ]],
-                                                 ["Die Bergdörfer", [
-                                                     "Grünwettersbach",
-                                                     "Hohenwettersbach",
-                                                     "Stupferich",
-                                                     "Palmbach",
-                                                     "Wolfartsweier",
-                                                 ]]], @offer.district),
-                     {placeholder: t('activerecord.attributes.offer.district'),
-                      hide_label: true,
-                      include_blank: true},
+                     grouped_options_for_select([
+                                                  ["Mitte", [
+                                                    "Mitte",
+                                                    "Moabit",
+                                                    "Hansaviertel",
+                                                    "Tiergarten",
+                                                    "Wedding",
+                                                    "Gesundbrunnen"
+                                                  ]],
+                                                  ["Friedrichshain-Kreuzberg", [
+                                                    "Friedrichshain",
+                                                    "Kreuzberg"
+                                                  ]],
+                                                  ["Pankow", [
+                                                    "Prenzlauer Berg",
+                                                    "Weißensee",
+                                                    "Blankenburg",
+                                                    "Heinersdorf",
+                                                    "Karow",
+                                                    "Stadtrandsiedlung Malchow",
+                                                    "Pankow",
+                                                    "Blankenfelde",
+                                                    "Buch",
+                                                    "Französisch Buchholz",
+                                                    "Niederschönhausen",
+                                                    "Rosenthal",
+                                                    "Wilhelmsruh"
+                                                  ]],
+                                                  ["Charlottenburg-Wilmersdorf", [
+                                                    "Charlottenburg",
+                                                    "Wilmersdorf",
+                                                    "Schmargendorf",
+                                                    "Grunewald",
+                                                    "Westend",
+                                                    "Charlottenburg-Nord",
+                                                    "Halensee"
+                                                  ]],
+                                                  ["Spandau", [
+                                                    "Spandau",
+                                                    "Haselhorst",
+                                                    "Siemensstadt",
+                                                    "Staaken",
+                                                    "Gatow",
+                                                    "Kladow",
+                                                    "Hakenfelde",
+                                                    "Falkenhagener Feld",
+                                                    "Wilhelmstadt"
+                                                  ]],
+                                                  ["Steglitz-Zehlendorf", [
+                                                    "Steglitz",
+                                                    "Lichterfelde",
+                                                    "Lankwitz",
+                                                    "Zehlendorf",
+                                                    "Dahlem",
+                                                    "Nikolassee",
+                                                    "Wannsee",
+                                                    "Schlachtensee"
+                                                  ]],
+                                                  ["Tempelhof-Schöneberg", [
+                                                    "Schöneberg",
+                                                    "Friedenau",
+                                                    "Tempelhof",
+                                                    "Mariendorf",
+                                                    "Marienfelde",
+                                                    "Lichtenrade"
+                                                  ]],
+                                                  ["Neukölln", [
+                                                    "Neukölln",
+                                                    "Britz",
+                                                    "Buckow",
+                                                    "Rudow",
+                                                    "Gropiusstadt"
+                                                  ]],
+                                                  ["Treptow-Köpenick", [
+                                                    "Alt-Treptow",
+                                                    "Plänterwald",
+                                                    "Baumschulenweg",
+                                                    "Johannisthal",
+                                                    "Niederschöneweide",
+                                                    "Altglienicke",
+                                                    "Adlershof",
+                                                    "Bohnsdorf",
+                                                    "Oberschöneweide",
+                                                    "Köpenick",
+                                                    "Friedrichshagen",
+                                                    "Rahnsdorf",
+                                                    "Grünau",
+                                                    "Müggelheim",
+                                                    "Schmöckwitz"
+                                                  ]],
+                                                  ["Marzahn-Hellersdorf", [
+                                                    "Marzahn",
+                                                    "Biesdorf",
+                                                    "Kaulsdorf",
+                                                    "Mahlsdorf",
+                                                    "Hellersdorf"
+                                                  ]],
+                                                  ["Lichtenberg", [
+                                                    "Friedrichsfelde",
+                                                    "Karlshorst",
+                                                    "Lichtenberg",
+                                                    "Falkenberg",
+                                                    "Malchow",
+                                                    "Wartenberg",
+                                                    "Neu-Hohenschönhausen",
+                                                    "Alt-Hohenschönhausen",
+                                                    "Fennpfuhl",
+                                                    "Rummelsburg"
+                                                  ]],
+                                                  ["Reinickendorf", [
+                                                    "Reinickendorf",
+                                                    "Tegel",
+                                                    "Konradshöhe",
+                                                    "Heiligensee",
+                                                    "Frohnau",
+                                                    "Hermsdorf",
+                                                    "Waidmannslust",
+                                                    "Lübars",
+                                                    "Wittenau",
+                                                    "Märkisches Viertel",
+                                                    "Borsigwalde"
+                                                  ]]
+
+                                                ], @offer.district),
+                     { placeholder: t('activerecord.attributes.offer.district'),
+                       hide_label: true,
+                       include_blank: true },
                      class: 'input-sm select2',
                      'data-placeholder' => t('activerecord.attributes.offer.district') %>
       </div>

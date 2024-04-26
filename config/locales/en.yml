@@ -87,12 +87,12 @@ en:
     hide_success: "%{model} successfully hidden."
     hidden: "Not public"
     about: Contact
-    kaheim: About Kaheim
+    kaheim: About Berheim
     dot: dot
 
   privacy:
     warning: Please do not share any sensitive data. All %{model} are publicly accessible.
-    explanation: Your name will be shown publicly but your email address will not be visible to the public. When your %{model} is published on the website, there will be a contact form shown below your %{model}. People can use the form to contact you. Kaheim will then send you an email with the reply. Your contact data is private (unless you include it in the description).
+    explanation: Your name will be shown publicly but your email address will not be visible to the public. When your %{model} is published on the website, there will be a contact form shown below your %{model}. People can use the form to contact you. Berheim will then send you an email with the reply. Your contact data is private (unless you include it in the description).
 
   sort:
     sorted: Sorted by

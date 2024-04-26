@@ -1,4 +1,4 @@
-Rack::Attack.cache.store = Redis.new(path: "/home/kaheim/.redis/sock") if Rails.env.production?
+Rack::Attack.cache.store = Redis.new(path: "/home/berheim/.redis/sock") if Rails.env.production?
 
 # Block attacks from IPs in cache
 # To add an IP: Rails.cache.write("block 1.2.3.4", true, expires_in: 2.days)
