@@ -5,8 +5,12 @@
   <%= render 'welcome_message' %>
 </div>
 
+<div class="welcome-disclaimer">
+  <%= render 'welcome_disclaimer' %>
+</div>
+
 <div class="hidden">
-  <%= custom_bootstrap_form_for(Subscription.new, as: :subscription, url: subscriptions_create_path, layout: :inline, html: {id: "new_subscription_fake"}) do |f| %>
+  <%= custom_bootstrap_form_for(Subscription.new, as: :subscription, url: subscriptions_create_path, layout: :inline, html: { id: "new_subscription_fake" }) do |f| %>
     <%= f.hidden_field 'spam', value: true %>
     <div class="hidden">
       <%= f.form_group :no_spam do %>
@@ -23,7 +27,7 @@
 </div>
 
 
-<%= render partial: 'shared/list_page_header', locals: { count: @offers.count, item: 'offer', header_class: 'welcome-list-header'} %>
+<%= render partial: 'shared/list_page_header', locals: { count: @offers.count, item: 'offer', header_class: 'welcome-list-header' } %>
 <% if @offers.count > 2 %>
   <div class="row">
     <div class="dropdown pull-right" id="sort-button">
@@ -37,7 +41,7 @@
   </div>
 </div>
 
-<%= render partial: 'shared/list_page_header', locals: { count: @requests.count, item: 'request', header_class: 'welcome-list-header'} %>
+<%= render partial: 'shared/list_page_header', locals: { count: @requests.count, item: 'request', header_class: 'welcome-list-header' } %>
 <div class="row">
   <div class="sort">
     <%= render partial: 'requests/list', locals: { requests: @requests } %>
