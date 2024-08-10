@@ -200,11 +200,11 @@ de:
     answer_mail:
       subject: "Antwort auf '%{title}'"
     answer_mail_notification:
-      subject: "Deine Nachricht über Kaheim"
+      subject: "Deine Nachricht über Berheim"
     admin_notice_mail:
-      subject: Neuer Eintrag auf Kaheim
+      subject: Neuer Eintrag auf Berheim
     send_token_mail:
-      subject: "Dein %{item_type} auf Kaheim"
+      subject: "Dein %{item_type} auf Berheim"
     reactivate_item_mail:
       subject: "Eintrag verlängern?"
 
@@ -216,7 +216,7 @@ de:
     subscribe_notification:
       subject: "Abonnement erstellt"
     new_item_notification:
-      subject: "Neuer Eintrag auf Kaheim"
+      subject: "Neuer Eintrag auf Berheim"
 
   reactivation:
     success: "Dein %{model} wurde reaktiviert."

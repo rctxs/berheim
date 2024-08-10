@@ -84,6 +84,9 @@ ul.nav li.language a {
 }
 
 .footer {
+  /* margin replaces backdrop */
+  margin-top: 5em;
+
   position: relative;
   bottom: 0px;
   padding: 20px 0px;

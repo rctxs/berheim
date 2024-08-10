@@ -200,11 +200,11 @@ en:
     answer_mail:
       subject: "Reply to '%{title}'"
     answer_mail_notification:
-      subject: "Your message sent through kaheim.de"
+      subject: "Your message sent through berheim.smd.berlin"
     admin_notice_mail:
       subject: New item
     send_token_mail:
-      subject: "Your %{item_type} on Kaheim"
+      subject: "Your %{item_type} on Berheim"
     reactivate_item_mail:
       subject: "Update item?"
 
@@ -216,7 +216,7 @@ en:
     subscribe_notification:
       subject: "Subscription created"
     new_item_notification:
-      subject: "New item on Kaheim"
+      subject: "New item on Berheim"
 
   reactivation:
       success: "Your %{model} was reactivated."

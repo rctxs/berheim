@@ -1,14 +1,19 @@
 <h1>Impressum</h1>
 
 <h3>Kontakt</h3>
-Das Kaheim-Team kannst du <%= mail_to 'team@kaheim.de', 'per Mail', encode: 'hex' %> erreichen.
+Das Berheim-Team kannst du <%= mail_to Rails.application.credentials[:contact][:mail], 'per Mail', encode: 'hex' %> erreichen.
 
 <h3><%=t '.responsible' %></h3>
 
 <p>
-  Raphael Taxis
+  <%= Rails.application.credentials[:contact][:person] %>
   <br />
-  berheim (at) smd (<%=t 'helpers.dot' %>) berlin
+  <%= Rails.application.credentials[:contact][:mail] %>
+  <br />
+  <br />
+  <%= Rails.application.credentials[:contact][:organization] %>
+  <br />
+  <%= Rails.application.credentials[:contact][:care_of] %>
   <br />
   <%= Rails.application.credentials[:contact][:street] %>
   <br />
