@@ -6,10 +6,10 @@ module OffersHelper
   end
 
   def address_info offer
-    if offer.district && offer.district != ''
-      "#{offer.district}, #{offer.street}"
+    if offer.street && offer.street != ''
+      "#{offer.street}, #{offer.zip_code}, #{offer.district}"
     else
-      offer.street
+      "#{offer.zip_code}, #{offer.district}"
     end
   end
 end

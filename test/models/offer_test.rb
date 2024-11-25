@@ -2,8 +2,8 @@ require 'test_helper'
 
 class OfferTest < ActiveSupport::TestCase
 
-  default_values = {title: 'Title', description: 'Description', from_date: '01-01-1970', rent: 250, size: 14,
-                    gender: 0, street: 'Street', zip_code: '12394', owner_name: 'Owner', email: 'owner@example.com'}
+  default_values = { title: 'Ein Zuhause', description: 'Erwartet Dich', from_date: '29-09-2019', rent: 250, size: 14,
+                     gender: 0, street: 'Wilhelmshavener Str. 4', district: 'Moabit', zip_code: '10551', owner_name: 'Owner', email: 'owner@example.com' }
 
   test 'default_values work' do
     offer = Offer.new(default_values)
@@ -36,8 +36,8 @@ class OfferTest < ActiveSupport::TestCase
     assert_not offer.save
   end
 
-  test 'must have street' do
-    offer = Offer.new(default_values.except(:street))
+  test 'must have district' do
+    offer = Offer.new(default_values.except(:district))
     assert_not offer.save
   end
 
@@ -67,6 +67,5 @@ class OfferTest < ActiveSupport::TestCase
     offer.title = 'a' * 141
     assert_not offer.save
   end
-
 
 end
