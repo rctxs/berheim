@@ -1,6 +1,7 @@
 class Request < ApplicationRecord
   include Item
   include CreationSpamCheck
+  include CreationPrivacyPolicyAcceptedCheck
 
   validates_presence_of :title, :description, :gender
   validates_length_of :title, maximum: 140

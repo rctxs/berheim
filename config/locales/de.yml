@@ -23,6 +23,7 @@ de:
         zip_code: 'PLZ'
         rent: 'Miete (warm)'
         size: 'Fläche'
+        privacy_policy_accepted: "Ich habe die Datenschutzerklärung gelesen und erkläre mich damit einverstanden."
       request:
         title: "Titel"
         description: "Beschreibung"
@@ -30,6 +31,7 @@ de:
         to_date: "Auszug"
         created_at: "Erstellt am"
         no_spam: Ich bin ein Mensch.
+        privacy_policy_accepted: "Ich habe die Datenschutzerklärung gelesen und erkläre mich damit einverstanden."
       item:
         owner_name: "Dein Name"
         email: "Deine E-Mail-Adresse"
@@ -43,6 +45,9 @@ de:
       answer:
         message: Nachricht
         mail: "Deine E-Mail-Adresse"
+        privacy_policy_accepted: "Ich habe die Datenschutzerklärung gelesen und erkläre mich damit einverstanden."
+      subscription:
+        privacy_policy_accepted: "Ich habe die Datenschutzerklärung gelesen und erkläre mich damit einverstanden."
 
   helpers:
     switch_to_english: Switch to english

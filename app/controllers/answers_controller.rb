@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def answer_params
-    params[:answer].permit(:message, :mail, :item_id, :item_type)
+    params[:answer].permit(:message, :mail, :item_id, :item_type, :privacy_policy_accepted)
   end
 
   def block_spam

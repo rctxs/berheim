@@ -79,6 +79,11 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-actions">
+        <% unless @request.id %>
+          <%= f.form_group :privacy_policy_accepted do %>
+            <%= f.check_box :privacy_policy_accepted %>
+          <% end %>
+        <% end %>
         <%= f.submit nil, class: 'btn btn-primary' %>
         <%= link_to t('helpers.links.cancel'), requests_path, class: 'btn btn-default' %>
       </div>

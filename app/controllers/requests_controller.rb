@@ -77,13 +77,14 @@ class RequestsController < ApplicationController
   end
 
   private
-    def set_editable_request
-      @request = GlobalID::Locator.locate_signed(params[:token], for: :owner)
-      redirect_to root_path, flash: { error: t('requests.invalid_token')} unless @request
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def request_params
-      params[:request].permit(:owner_name, :email, :title, :description, :from_date, :to_date, :gender, :no_spam)
-    end
+  def set_editable_request
+    @request = GlobalID::Locator.locate_signed(params[:token], for: :owner)
+    redirect_to root_path, flash: { error: t('requests.invalid_token') } unless @request
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def request_params
+    params[:request].permit(:owner_name, :email, :title, :description, :from_date, :to_date, :gender, :no_spam, :privacy_policy_accepted)
+  end
 end
