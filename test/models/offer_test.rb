@@ -3,7 +3,7 @@ require 'test_helper'
 class OfferTest < ActiveSupport::TestCase
 
   default_values = { title: 'Ein Zuhause', description: 'Erwartet Dich', from_date: '29-09-2019', rent: 250, size: 14,
-                     gender: 0, street: 'Wilhelmshavener Str. 4', district: 'Moabit', zip_code: '10551', owner_name: 'Owner', email: 'owner@example.com' }
+                     gender: 0, street: 'Wilhelmshavener Str. 4', district: 'Moabit', zip_code: '10551', owner_name: 'Owner', email: 'owner@example.com', privacy_policy_accepted: '1' }
 
   test 'default_values work' do
     offer = Offer.new(default_values)
@@ -53,6 +53,11 @@ class OfferTest < ActiveSupport::TestCase
 
   test 'must have email' do
     offer = Offer.new(default_values.except(:email))
+    assert_not offer.save
+  end
+
+  test 'must have privacy policy accepted' do
+    offer = Offer.new(default_values.except(:privacy_policy_accepted))
     assert_not offer.save
   end
 
