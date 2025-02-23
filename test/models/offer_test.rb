@@ -61,6 +61,12 @@ class OfferTest < ActiveSupport::TestCase
     assert_not offer.save
   end
 
+  test 'must have privacy policy accepted to be true' do
+    request = Offer.new(default_values)
+    request.privacy_policy_accepted = false
+    assert_not request.save
+  end
+
   test 'title can have 140 characters' do
     offer = Offer.new(default_values.except(:title))
     offer.title = 'a' * 140

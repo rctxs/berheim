@@ -50,6 +50,12 @@ class RequestTest < ActiveSupport::TestCase
     assert_not request.save
   end
 
+  test 'must have privacy policy accepted to be true' do
+    request = Request.new(default_values)
+    request.privacy_policy_accepted = false
+    assert_not request.save
+  end
+
   test 'title can have 140 characters' do
     request = Request.new(default_values.except(:title))
     request.title = 'a' * 140
