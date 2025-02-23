@@ -4,11 +4,11 @@ class SubscriptionsController < ApplicationController
   before_action :authenticate_user!, only: [:unsubscribe_user]
 
   def create
-    @subscription = Subscription.find_or_create_by(email: subscription_params[:email])
+    @subscription = Subscription.find_or_create_by(email: subscription_params[:email], privacy_policy_accepted: subscription_params[:privacy_policy_accepted])
     @subscription.no_spam = subscription_params[:no_spam]
     @subscription.offers = true if subscription_params[:offers] == 'true'
     @subscription.requests = true if subscription_params[:requests] == 'true'
-    @subscription.privacy_policy_accepted = subscription_params[:privacy_policy_accepted]
+    @subscription.privacy_policy_accepted = true if subscription_params[:privacy_policy_accepted] == 'true'
     if subscription_params[:spam] == 'true'
       ip = request.remote_ip
       logger.debug "Blocking #{ip}"

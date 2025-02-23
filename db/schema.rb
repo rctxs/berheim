@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2025_01_25_114437) do
     t.string "item_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean "privacy_policy_accepted", default: false, null: false
+    t.boolean "privacy_policy_accepted", null: false
     t.index ["item_id", "item_type"], name: "index_answers_on_item_id_and_item_type"
   end
 
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2025_01_25_114437) do
     t.string "email", null: false
     t.boolean "blocked", default: false, null: false
     t.datetime "email_confirmed_at"
-    t.boolean "privacy_policy_accepted", default: false, null: false
+    t.boolean "privacy_policy_accepted", null: false
   end
 
   create_table "requests", force: :cascade do |t|
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2025_01_25_114437) do
     t.string "email", null: false
     t.boolean "blocked", default: false, null: false
     t.datetime "email_confirmed_at"
-    t.boolean "privacy_policy_accepted", default: false, null: false
+    t.boolean "privacy_policy_accepted", null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2025_01_25_114437) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "unsubscribe_token", limit: 255
-    t.boolean "privacy_policy_accepted", default: false, null: false
+    t.boolean "privacy_policy_accepted", null: false
     t.index ["confirmation_token"], name: "index_subscriptions_on_confirmation_token"
     t.index ["email"], name: "index_subscriptions_on_email"
     t.index ["offers"], name: "index_subscriptions_on_offers"

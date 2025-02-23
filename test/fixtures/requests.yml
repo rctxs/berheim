@@ -1,4 +1,3 @@
-
 need_room:
   title: I need a room
   description: Hi there, does anyone have a room for me?
@@ -6,6 +5,7 @@ need_room:
   owner_name: Jim Fisher
   email: jim.f@gmail.com
   email_confirmed_at: 14-12-2013
+  privacy_policy_accepted: true
 
 need_room2:
   title: I need a room
@@ -13,6 +13,7 @@ need_room2:
   gender: 2
   owner_name: Rachel Simpson
   email: rachel@my-company.co
+  privacy_policy_accepted: true
 
 need_room3:
   title: I need a room
@@ -20,3 +21,4 @@ need_room3:
   gender: 2
   owner_name: Maren Simpson
   email: maren@my-company.co
+  privacy_policy_accepted: true

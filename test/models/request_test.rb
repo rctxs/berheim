@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RequestTest < ActiveSupport::TestCase
   default_values = { title: 'Ein Zuhause', description: 'Erwartet Dich', to_date: '29-09-2019', from_date: '29-11-2019',
-                     gender: 0, no_spam: '1', owner_name: 'Owner', email: 'owner@example.com', privacy_policy_accepted: '1' }
+                     gender: 0, no_spam: '1', owner_name: 'Owner', email: 'owner@example.com', privacy_policy_accepted: true }
 
   test 'default_values work' do
     request = Request.new(default_values)
