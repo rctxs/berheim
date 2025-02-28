@@ -1,12 +1,8 @@
 <% content_for :title, @request.title %>
 
-<script type="text/javascript">
-    store_owner_token(<%= @request.id %>, 'request');
-</script>
-
 <div class="page-header">
   <h1>
-    <%=t 'requests.show.title', name: @request.owner_name %>
+    <%= t 'requests.show.title', name: @request.owner_name %>
   </h1>
 </div>
 
@@ -27,7 +23,7 @@
         </td>
         <% if @request.to_date %>
           <td class="time">
-            <%=t 'requests.show.to' %> <%=l @request.to_date %>
+            <%= t 'requests.show.to' %> <%= l @request.to_date %>
           </td>
         <% end %>
       </tr>
@@ -48,7 +44,7 @@
 
 </div>
 
-<hr />
+<hr/>
 
 <div class="form-actions">
   <% if @request.outdated? %>

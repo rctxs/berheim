@@ -1,12 +1,8 @@
 <% content_for :title, @offer.title %>
 
-<script type="text/javascript">
-    store_owner_token(<%= @offer.id %>, 'offer');
-</script>
-
 <div class="page-header">
   <h1>
-    <%=t 'offers.show.title', name: @offer.owner_name %>
+    <%= t 'offers.show.title', name: @offer.owner_name %>
   </h1>
 </div>
 
@@ -59,7 +55,6 @@
   <div class="description">
     <%= auto_link simple_format(@offer.description) %>
   </div>
-
   <h2><i class="fa fa-comments-o"></i> <%= t 'answers.title' %></h2>
   <% if @offer.answers.count > 0 %>
     <%= render @offer.answers %>
@@ -68,7 +63,7 @@
   <% end %>
 </div>
 
-<hr />
+<hr/>
 
 <div class="form-actions">
   <% if @offer.outdated? %>
