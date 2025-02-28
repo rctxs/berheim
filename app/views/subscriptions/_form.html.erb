@@ -6,7 +6,7 @@
     <% end %>
   </div>
   <%= f.form_group :privacy_policy_accepted do %>
-    <%= f.check_box :privacy_policy_accepted %>
+    <%= render partial: 'shared/privacy_policy_accepted_check_box', locals: { object_name: f.object_name, item_type: item_type } %>
   <% end %>
   <%= f.email_field :email,
                     id: "subscription-email-#{item_type}",

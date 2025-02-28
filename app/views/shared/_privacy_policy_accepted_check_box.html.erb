@@ -1,0 +1,14 @@
+<% item_type = item_type == nil ? "default" : item_type %>
+<%= tag.div class: "checkbox" do %>
+  <%= tag.label for: "privacy_policy_accepted_#{item_type}" do %>
+    <% input_inner_html = "  " + t('privacy.policy_accepted') % link_to(t('privacy.policy'), page_path('about')) %>
+    <%= tag.input input_inner_html,
+                  escape: false,
+                  name: "#{object_name}[privacy_policy_accepted]",
+                  type: "checkbox",
+                  id: "privacy_policy_accepted_#{item_type}",
+                  value: "1",
+                  autocomplete: "off"
+    %>
+  <% end %>
+<% end %>

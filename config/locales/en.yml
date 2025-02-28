@@ -93,6 +93,8 @@ en:
   privacy:
     warning: Please do not share any sensitive data. All %{model} are publicly accessible.
     explanation: Your name will be shown publicly but your email address will not be visible to the public. When your %{model} is published on the website, there will be a contact form shown below your %{model}. People can use the form to contact you. Berheim will then send you an email with the reply. Your contact data is private (unless you include it in the description).
+    policy: privacy policy
+    policy_accepted: have read and agree to the terms of the %s.
 
   sort:
     sorted: Sorted by
@@ -219,8 +221,8 @@ en:
       subject: "New item on Berheim"
 
   reactivation:
-      success: "Your %{model} was reactivated."
-      bad_token: "Invalid token. Possibly the item has already been reactivated."
+    success: "Your %{model} was reactivated."
+    bad_token: "Invalid token. Possibly the item has already been reactivated."
 
   captcha:
     label: "Please enter '%{captcha}' here:"

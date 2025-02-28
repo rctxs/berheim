@@ -12,7 +12,7 @@
     <% end %>
   <% end %>
   <%= f.form_group :privacy_policy_accepted do %>
-    <%= f.check_box :privacy_policy_accepted %>
+    <%= render partial: 'shared/privacy_policy_accepted_check_box', locals: { object_name: f.object_name } %>
   <% end %>
   <%= f.form_group do %>
     <%= f.primary t('helpers.links.send') %>

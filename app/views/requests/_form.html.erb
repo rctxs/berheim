@@ -81,7 +81,7 @@
       <div class="form-actions">
         <% unless @request.id %>
           <%= f.form_group :privacy_policy_accepted do %>
-            <%= f.check_box :privacy_policy_accepted %>
+            <%= render partial: 'shared/privacy_policy_accepted_check_box', locals: { object_name: f.object_name } %>
           <% end %>
         <% end %>
         <%= f.submit nil, class: 'btn btn-primary' %>
