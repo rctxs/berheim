@@ -11,6 +11,7 @@ tworooms:
   owner_name: John Ericson
   email: john.ericson@example.com
   email_confirmed_at: 14-12-2013
+  privacy_policy_accepted: true
 
 roommate_wanted:
   title: Roommate wanted
@@ -24,6 +25,7 @@ roommate_wanted:
   district: Moabit
   owner_name: John Ericson
   email: john.ericson@example.com
+  privacy_policy_accepted: true
 
 nice_appartment:
   title: Nice appartment
@@ -36,6 +38,7 @@ nice_appartment:
   zip_code: 12846
   owner_name: Tina Simpson
   email: tina@my-company.co
+  privacy_policy_accepted: true
 
 tworooms2:
   title: Two Rooms in small flat
@@ -49,6 +52,7 @@ tworooms2:
   district: Moabit
   owner_name: Lisa Ericson
   email: lisa.ericson@example.com
+  privacy_policy_accepted: true
 
 roommate_wanted2:
   title: Roommate wanted
@@ -62,6 +66,7 @@ roommate_wanted2:
   district: Moabit
   owner_name: Lisa Ericson
   email: lisa.ericson@example.com
+  privacy_policy_accepted: true
 
 nice_appartment2:
   title: Nice appartment
@@ -75,6 +80,7 @@ nice_appartment2:
   district: Moabit
   owner_name: Richard Simpson
   email: richard@my-company.co
+  privacy_policy_accepted: true
 
 other_appartment:
   title: Other appartment
@@ -88,6 +94,7 @@ other_appartment:
   district: Moabit
   owner_name: Maren Simpson
   email: maren@my-company.co
+  privacy_policy_accepted: true
 
 hidden_offer:
   title: Other appartment
@@ -102,3 +109,4 @@ hidden_offer:
   is_public: false
   owner_name: Jane Vaider
   email: jane@darth.vaider.com
+  privacy_policy_accepted: true

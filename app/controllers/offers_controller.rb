@@ -77,13 +77,14 @@ class OffersController < ApplicationController
   end
 
   private
-    def set_editable_offer
-      @offer = GlobalID::Locator.locate_signed(params[:token], for: :owner)
-      redirect_to root_path, flash: { error: t('offers.invalid_token')} unless @offer
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def offer_params
-      params[:offer].permit(:owner_name, :email, :title, :description, :rent, :size, :gender, :from_date, :to_date, :district, :street, :zip_code)
-    end
+  def set_editable_offer
+    @offer = GlobalID::Locator.locate_signed(params[:token], for: :owner)
+    redirect_to root_path, flash: { error: t('offers.invalid_token') } unless @offer
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def offer_params
+    params[:offer].permit(:owner_name, :email, :title, :description, :rent, :size, :gender, :from_date, :to_date, :district, :street, :zip_code, :privacy_policy_accepted)
+  end
 end

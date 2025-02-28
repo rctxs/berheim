@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2><%=t 'helpers.answer' %></h2>
+  <h2><%= t 'helpers.answer' %></h2>
 </div>
 
 <%= bootstrap_form_for answer, layout: :horizontal do |f| %>
@@ -10,6 +10,9 @@
       <%= label_tag(:stupid_captcha, t('captcha.label', captcha: 'Maria')) %>
       <%= text_field_tag(:stupid_captcha) %>
     <% end %>
+  <% end %>
+  <%= f.form_group :privacy_policy_accepted do %>
+    <%= render partial: 'shared/privacy_policy_accepted_check_box', locals: { object_name: f.object_name } %>
   <% end %>
   <%= f.form_group do %>
     <%= f.primary t('helpers.links.send') %>

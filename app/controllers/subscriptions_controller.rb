@@ -4,10 +4,11 @@ class SubscriptionsController < ApplicationController
   before_action :authenticate_user!, only: [:unsubscribe_user]
 
   def create
-    @subscription = Subscription.find_or_create_by(email: subscription_params[:email])
+    @subscription = Subscription.find_or_create_by(email: subscription_params[:email], privacy_policy_accepted: subscription_params[:privacy_policy_accepted])
     @subscription.no_spam = subscription_params[:no_spam]
     @subscription.offers = true if subscription_params[:offers] == 'true'
     @subscription.requests = true if subscription_params[:requests] == 'true'
+    @subscription.privacy_policy_accepted = true if subscription_params[:privacy_policy_accepted] == 'true'
     if subscription_params[:spam] == 'true'
       ip = request.remote_ip
       logger.debug "Blocking #{ip}"
@@ -16,7 +17,7 @@ class SubscriptionsController < ApplicationController
     end
     if @subscription.changed?
       unless @subscription.save
-        redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.error_save') + ' ' + @subscription.errors.full_messages.join('. ') + '.'})
+        redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.error_save') + ' ' + @subscription.errors.full_messages.join('. ') + '.' })
         return
       end
       if @subscription.confirmed?
@@ -33,7 +34,7 @@ class SubscriptionsController < ApplicationController
         redirect_back(fallback_location: root_path, notice: t('subscriptions.subscribe.success.unconfirmed_user'))
       end
     elsif @subscription.confirmed?
-      redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.error_existing')})
+      redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.error_existing') })
     else
       SubscriptionMailer.confirmation_request(@subscription).deliver_now
       redirect_back(fallback_location: root_path, notice: t('subscriptions.subscribe.success.unconfirmed'))
@@ -43,7 +44,7 @@ class SubscriptionsController < ApplicationController
   def unsubscribe_user
     @subscription = Subscription.find_by_email(current_user.email)
     unless @subscription
-      redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.unsubscribe.not_subscribed')})
+      redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.unsubscribe.not_subscribed') })
       return
     end
     @subscription.offers = false if subscription_params[:offers] == 'true'
@@ -59,20 +60,20 @@ class SubscriptionsController < ApplicationController
   def destroy
     @subscription = Subscription.find_by_unsubscribe_token(params[:unsubscribe_token])
     unless @subscription
-      redirect_to root_path, flash: { error: t('subscriptions.unsubscribe.bad_token')}
+      redirect_to root_path, flash: { error: t('subscriptions.unsubscribe.bad_token') }
       return
     end
     case params[:item_type]
-      when 'offers'
-        @subscription.offers = false
-      when 'requests'
-        @subscription.requests = false
-      when 'all'
-        @subscription.offers = false
-        @subscription.requests = false
-      else
-        redirect_to root_path, flash: { error: t('subscriptions.unsubscribe.bad_item_type')}
-        return
+    when 'offers'
+      @subscription.offers = false
+    when 'requests'
+      @subscription.requests = false
+    when 'all'
+      @subscription.offers = false
+      @subscription.requests = false
+    else
+      redirect_to root_path, flash: { error: t('subscriptions.unsubscribe.bad_item_type') }
+      return
     end
     if @subscription.offers || @subscription.requests
       @subscription.save! if @subscription.changed?
@@ -96,12 +97,12 @@ class SubscriptionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def subscription_params
-    params[:subscription].permit(:email, :offers, :requests, :no_spam, :spam)
+    params[:subscription].permit(:email, :offers, :requests, :no_spam, :spam, :privacy_policy_accepted)
   end
 
   def check_offers_or_requests
     unless subscription_params[:offers] == 'true' || subscription_params[:requests] == 'true' || subscription_params[:spam] == 'true'
-      redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.nothing_selected')})
+      redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.nothing_selected') })
     end
   end
 

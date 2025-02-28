@@ -79,6 +79,11 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-actions">
+        <% unless @request.id %>
+          <%= f.form_group :privacy_policy_accepted do %>
+            <%= render partial: 'shared/privacy_policy_accepted_check_box', locals: { object_name: f.object_name } %>
+          <% end %>
+        <% end %>
         <%= f.submit nil, class: 'btn btn-primary' %>
         <%= link_to t('helpers.links.cancel'), requests_path, class: 'btn btn-default' %>
       </div>
