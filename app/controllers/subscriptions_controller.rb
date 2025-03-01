@@ -17,7 +17,8 @@ class SubscriptionsController < ApplicationController
     end
     if @subscription.changed?
       unless @subscription.save
-        redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.error_save') + ' ' + @subscription.errors.full_messages.join('. ') + '.' })
+        filtered_full_messages = @subscription.errors.select { |error| error.type != :taken }.map { |error| error.full_message }
+        redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.error_save') + ' ' + filtered_full_messages.join('. ') + '.' })
         return
       end
       if @subscription.confirmed?
@@ -34,7 +35,8 @@ class SubscriptionsController < ApplicationController
         redirect_back(fallback_location: root_path, notice: t('subscriptions.subscribe.success.unconfirmed_user'))
       end
     elsif @subscription.confirmed?
-      redirect_back(fallback_location: root_path, flash: { error: t('subscriptions.subscribe.error_existing') })
+      redirect_back(fallback_location: root_path, notice: t('subscriptions.subscribe.success.unconfirmed'))
+      return
     else
       SubscriptionMailer.confirmation_request(@subscription).deliver_now
       redirect_back(fallback_location: root_path, notice: t('subscriptions.subscribe.success.unconfirmed'))
