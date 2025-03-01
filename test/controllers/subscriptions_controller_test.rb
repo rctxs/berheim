@@ -140,7 +140,7 @@ class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
     assert subscription.requests
   end
 
-  test 'error message when subscribing offers and offers already subscribed and confirmed' do
+  test 'prevent user enumeration: no error message when subscribing offers and offers already subscribed and confirmed' do
     subscriber = subscriptions(:offer_subscriber)
     assert subscriber.offers
     assert_not subscriber.requests
@@ -148,14 +148,31 @@ class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
       post subscriptions_create_path, params: { subscription: { email: subscriber.email, offers: 'true', no_spam: 1, privacy_policy_accepted: 'true' } }, headers: { 'HTTP_REFERER': 'localhost' }
     end
     assert_redirected_to 'localhost'
-    assert_equal I18n.t('subscriptions.subscribe.error_existing'), flash[:error]
+    assert_equal I18n.t('subscriptions.subscribe.success.unconfirmed'), flash[:notice]
+    assert_nil flash[:error]
 
     subscription = Subscription.find_by_email(subscriber.email)
     assert subscription.offers
     assert_not subscription.requests
   end
 
-  test 'error message when subscribing offers and offers and requests already subscribed and confirmed' do
+  test 'prevent user enumeration: no taken error message when subscribing offers and offers already subscribed and confirmed and privacy policy not accepted' do
+    subscriber = subscriptions(:offer_subscriber)
+    assert subscriber.offers
+    assert_not subscriber.requests
+    assert_no_difference 'ActionMailer::Base.deliveries.size' do
+      post subscriptions_create_path, params: { subscription: { email: subscriber.email, offers: 'true', no_spam: 1, privacy_policy_accepted: 'false' } }, headers: { 'HTTP_REFERER': 'localhost' }
+    end
+    assert_redirected_to 'localhost'
+    assert_equal I18n.t('subscriptions.subscribe.error_save') + " " + I18n.t('privacy.policy') + " " + I18n.t('errors.messages.accepted') + ".", flash[:error]
+    assert_nil flash[:no_spam]
+
+    subscription = Subscription.find_by_email(subscriber.email)
+    assert subscription.offers
+    assert_not subscription.requests
+  end
+
+  test 'prevent user enumeration: no error message when subscribing offers and offers and requests already subscribed and confirmed' do
     subscriber = subscriptions(:everything_subscriber)
     assert subscriber.offers
     assert subscriber.requests
@@ -163,7 +180,23 @@ class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
       post subscriptions_create_path, params: { subscription: { email: subscriber.email, offers: 'true', no_spam: 1, privacy_policy_accepted: 'true' } }, headers: { 'HTTP_REFERER': 'localhost' }
     end
     assert_redirected_to 'localhost'
-    assert_equal I18n.t('subscriptions.subscribe.error_existing'), flash[:error]
+    assert_equal I18n.t('subscriptions.subscribe.success.unconfirmed'), flash[:notice]
+    assert_nil flash[:error]
+
+    subscription = Subscription.find_by_email(subscriber.email)
+    assert subscription.offers
+    assert subscription.requests
+  end
+
+  test 'prevent user enumeration: no taken error message when subscribing offers and offers and requests already subscribed and confirmed and privacy policy not accepted' do
+    subscriber = subscriptions(:everything_subscriber)
+    assert subscriber.offers
+    assert subscriber.requests
+    assert_no_difference 'ActionMailer::Base.deliveries.size' do
+      post subscriptions_create_path, params: { subscription: { email: subscriber.email, offers: 'true', no_spam: 1, privacy_policy_accepted: 'false' } }, headers: { 'HTTP_REFERER': 'localhost' }
+    end
+    assert_redirected_to 'localhost'
+    assert_nil flash[:no_spam]
 
     subscription = Subscription.find_by_email(subscriber.email)
     assert subscription.offers
