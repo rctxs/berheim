@@ -91,7 +91,7 @@ class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
       post subscriptions_create_path, params: { subscription: { email: subscriber.email, requests: 'true', no_spam: 1, privacy_policy_accepted: 'true' } }, headers: { 'HTTP_REFERER': 'localhost' }
     end
     assert_redirected_to 'localhost'
-    assert_equal I18n.t('subscriptions.subscribe.success.confirmed'), flash[:notice]
+    assert_equal I18n.t('subscriptions.subscribe.success.unconfirmed'), flash[:notice]
 
     subscribe_email = ActionMailer::Base.deliveries.last
     assert_equal '[Berheim] ' + I18n.t('subscription_mailer.subscribe_notification.subject'), subscribe_email.subject
@@ -128,7 +128,7 @@ class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
       post subscriptions_create_path, params: { subscription: { email: subscriber.email, offers: 'true', no_spam: 1, privacy_policy_accepted: 'true' } }, headers: { 'HTTP_REFERER': 'localhost' }
     end
     assert_redirected_to 'localhost'
-    assert_equal I18n.t('subscriptions.subscribe.success.confirmed'), flash[:notice]
+    assert_equal I18n.t('subscriptions.subscribe.success.unconfirmed'), flash[:notice]
 
     subscribe_email = ActionMailer::Base.deliveries.last
     assert_equal '[Berheim] ' + I18n.t('subscription_mailer.subscribe_notification.subject'), subscribe_email.subject
@@ -321,7 +321,7 @@ class SubscriptionsControllerTest < ActionDispatch::IntegrationTest
       post subscriptions_create_path, params: { subscription: { email: user.email, offers: 'true', no_spam: 1, privacy_policy_accepted: 'true' } }, headers: { 'HTTP_REFERER': 'localhost' }
     end
     assert_redirected_to 'localhost'
-    assert_equal I18n.t('subscriptions.subscribe.success.confirmed'), flash[:notice]
+    assert_equal I18n.t('subscriptions.subscribe.success.unconfirmed'), flash[:notice]
 
     subscription = Subscription.find_by_email(user.email)
     assert subscription.offers

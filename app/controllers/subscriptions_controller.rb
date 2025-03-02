@@ -23,7 +23,7 @@ class SubscriptionsController < ApplicationController
       end
       if @subscription.confirmed?
         SubscriptionMailer.subscribe_notification(@subscription).deliver_now unless user_signed_in?
-        redirect_back(fallback_location: root_path, notice: t('subscriptions.subscribe.success.confirmed'))
+        redirect_back(fallback_location: root_path, notice: t('subscriptions.subscribe.success.unconfirmed'))
         return
       end
     end
